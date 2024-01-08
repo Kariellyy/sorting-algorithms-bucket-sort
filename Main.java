@@ -7,12 +7,12 @@ import util.GenerateData;
 public class Main {
     public static void main(String[] args) {
 
-        SortingAlgorithmsBucketSort bubleSort = new BubbleSort();
-        // SortingAlgorithms selectionSort = new SelectionSort();
-        // SortingAlgorithms insertionSort = new InsertionSort();
-        // SortingAlgorithms mergeSort = new MergeSort();
-        // SortingAlgorithms quickSort = new QuickSort();
-        // SortingAlgorithms countingSort = new CountingSort();
+        SortingAlgorithms bubleSort = new BubbleSort();
+        SortingAlgorithms selectionSort = new SelectionSort();
+        SortingAlgorithms insertionSort = new InsertionSort();
+        SortingAlgorithms mergeSort = new MergeSort();
+        SortingAlgorithms quickSort = new QuickSort();
+        SortingAlgorithms countingSort = new CountingSort();
 
         System.out.println("Digite o tamanho do conjunto de dados: ");
         int size = Integer.parseInt(System.console().readLine());
@@ -23,19 +23,21 @@ public class Main {
         System.out.println("----------------------------------");
 
         runTest(dataSet, bubleSort);
-        // runTest(dataSet, selectionSort);
-        // runTest(dataSet, insertionSort);
-        // runTest(dataSet, mergeSort);
-        // runTest(dataSet, quickSort);
-        // runTest(dataSet, countingSort);
+        runTest(dataSet, selectionSort);
+        runTest(dataSet, insertionSort);
+        runTest(dataSet, mergeSort);
+        runTest(dataSet, quickSort);
+        runTest(dataSet, countingSort);
 
         System.out.println("----------------------------------");
     }
 
-    public static void runTest(int[] dataSet, SortingAlgorithmsBucketSort algorithm) {
+    public static void runTest(int[] dataSet, SortingAlgorithms algorithm) {
+        BucketSort bucketSort = new BucketSort(algorithm);
+
         String algorithmName = algorithm.getClass().getSimpleName();
         long startTime = System.nanoTime();
-        algorithm.sort(dataSet.clone());
+        bucketSort.sort(dataSet.clone());
         long endTime = System.nanoTime();
         long timeElapsed = endTime - startTime;
         double timeElapsedInMs = timeElapsed / 1_000_000.0;

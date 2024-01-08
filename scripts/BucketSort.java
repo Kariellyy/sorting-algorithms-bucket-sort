@@ -1,50 +1,51 @@
 package scripts;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class BucketSort {
+    private SortingAlgorithms innerAlgorithm;
 
-    public static int[] bucketSort(int[] dataSet) {
-        int maxVal = findMax(dataSet);
-        int bucketSize = (int) Math.ceil((double) maxVal / dataSet.length);
+    public BucketSort(SortingAlgorithms innerAlgorithm) {
+        this.innerAlgorithm = innerAlgorithm;
+    }
 
-        List<List<Integer>> buckets = new ArrayList<>();
+    public int[] sort(int[] dataSet) {
+        // Encontre o valor máximo e mínimo no conjunto de dados
+        int maxVal = dataSet[0];
+        int minVal = dataSet[0];
 
-        for (int i = 0; i < dataSet.length; i++) {
+        for (int value : dataSet) {
+            if (value > maxVal) {
+                maxVal = value;
+            }
+            if (value < minVal) {
+                minVal = value;
+            }
+        }
+
+        // Use a heurística para determinar o número de baldes
+        int numBuckets = (int) Math.ceil(Math.sqrt(dataSet.length));
+        ArrayList<ArrayList<Integer>> buckets = new ArrayList<>(numBuckets);
+
+        for (int i = 0; i < numBuckets; i++) {
             buckets.add(new ArrayList<>());
         }
 
+        // Distribua os elementos nos baldes
         for (int value : dataSet) {
-            int bucketIndex = (int) Math.floor((double) value / bucketSize);
+            int bucketIndex = (int) ((double) (value - minVal) / (maxVal - minVal + 1) * numBuckets);
             buckets.get(bucketIndex).add(value);
         }
 
-        for (List<Integer> bucket : buckets) {
-            // Aplicar algum algoritmo de ordenação nos baldes
-            Collections.sort(bucket);
-        }
-
-        // Concatenar os baldes ordenados
-        List<Integer> sortedList = new ArrayList<>();
-        for (List<Integer> bucket : buckets) {
-            sortedList.addAll(bucket);
-        }
-
-        // Converter para array
-        int[] sortedDataSet = sortedList.stream().mapToInt(Integer::intValue).toArray();
-
-        return sortedDataSet;
-    }
-
-    private static int findMax(int[] dataSet) {
-        int max = Integer.MIN_VALUE;
-        for (int value : dataSet) {
-            if (value > max) {
-                max = value;
+        // Use o algoritmo interno para ordenar cada balde
+        for (ArrayList<Integer> bucket : buckets) {
+            int[] bucketArray = bucket.stream().mapToInt(Integer::intValue).toArray();
+            innerAlgorithm.sort(bucketArray);
+            for (int i = 0; i < bucketArray.length; i++) {
+                dataSet[i] = bucketArray[i];
             }
         }
-        return max;
+
+        return dataSet;
     }
 }

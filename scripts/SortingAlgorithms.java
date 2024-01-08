@@ -1,5 +1,5 @@
 package scripts;
 
-public interface SortingAlgorithmsBucketSort {
+public interface SortingAlgorithms {
     public int[] sort(int[] dataSet);
 }

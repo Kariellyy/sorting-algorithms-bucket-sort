@@ -1,28 +1,19 @@
 package scripts;
 
-
-public class BubbleSort implements SortingAlgorithmsBucketSort {
+public class BubbleSort implements SortingAlgorithms {
     @Override
     public int[] sort(int[] dataSet) {
-        // Utilizar o Bucket Sort para pré-processamento
-        int[] preProcessedData = BucketSort.bucketSort(dataSet);
+        int[] sortedDataSet = dataSet.clone();
 
-        // Aplicar Bubble Sort nos dados pré-processados
-        int[] sortedDataSet = bubbleSort(preProcessedData);
-
-        return sortedDataSet;
-    }
-
-    private int[] bubbleSort(int[] dataSet) {
-        for (int i = 0; i < dataSet.length - 1; i++) {
-            for (int j = 0; j < dataSet.length - 1 - i; j++) {
-                if (dataSet[j] > dataSet[j + 1]) {
-                    int temp = dataSet[j];
-                    dataSet[j] = dataSet[j + 1];
-                    dataSet[j + 1] = temp;
+        for (int i = 0; i < sortedDataSet.length - 1; i++) {
+            for (int j = 0; j < sortedDataSet.length - 1 - i; j++) {
+                if (sortedDataSet[j] > sortedDataSet[j + 1]) {
+                    int aux = sortedDataSet[j];
+                    sortedDataSet[j] = sortedDataSet[j + 1];
+                    sortedDataSet[j + 1] = aux;
                 }
             }
         }
-        return dataSet;
+        return sortedDataSet;
     }
 }
