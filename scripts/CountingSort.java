@@ -1,6 +1,6 @@
 package scripts;
 
-public class CountingSort implements SortingAlgorithms {
+public class CountingSort implements SortingAlgorithm {
     @Override
     public int[] sort(int[] dataSet) {
         countingSort(dataSet);

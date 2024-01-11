@@ -1,6 +1,6 @@
 package scripts;
 
-public class InsertionSort implements SortingAlgorithms {
+public class InsertionSort implements SortingAlgorithm {
     @Override
     public int[] sort(int[] dataSet) {
         int n = dataSet.length;

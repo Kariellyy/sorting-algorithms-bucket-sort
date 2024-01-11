@@ -2,7 +2,7 @@ package scripts;
 
 import java.util.Arrays;
 
-public class MergeSort implements SortingAlgorithms {
+public class MergeSort implements SortingAlgorithm {
 
     @Override
     public int[] sort(int[] dataSet) {

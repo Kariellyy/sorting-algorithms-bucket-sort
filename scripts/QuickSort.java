@@ -1,6 +1,6 @@
 package scripts;
 
-public class QuickSort implements SortingAlgorithms {
+public class QuickSort implements SortingAlgorithm {
     @Override
     public int[] sort(int[] dataSet) {
         quickSort(dataSet, 0, dataSet.length - 1);

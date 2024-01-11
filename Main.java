@@ -7,12 +7,12 @@ import util.GenerateData;
 public class Main {
     public static void main(String[] args) {
 
-        SortingAlgorithms bubleSort = new BubbleSort();
-        SortingAlgorithms selectionSort = new SelectionSort();
-        SortingAlgorithms insertionSort = new InsertionSort();
-        SortingAlgorithms mergeSort = new MergeSort();
-        SortingAlgorithms quickSort = new QuickSort();
-        SortingAlgorithms countingSort = new CountingSort();
+        SortingAlgorithm bubleSort = new BubbleSort();
+        SortingAlgorithm selectionSort = new SelectionSort();
+        SortingAlgorithm insertionSort = new InsertionSort();
+        SortingAlgorithm mergeSort = new MergeSort();
+        SortingAlgorithm quickSort = new QuickSort();
+        SortingAlgorithm countingSort = new CountingSort();
 
         System.out.println("Digite o tamanho do conjunto de dados: ");
         int size = Integer.parseInt(System.console().readLine());
@@ -32,7 +32,7 @@ public class Main {
         System.out.println("----------------------------------");
     }
 
-    public static void runTest(int[] dataSet, SortingAlgorithms algorithm) {
+    public static void runTest(int[] dataSet, SortingAlgorithm algorithm) {
         BucketSort bucketSort = new BucketSort(algorithm);
 
         String algorithmName = algorithm.getClass().getSimpleName();

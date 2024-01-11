@@ -3,9 +3,9 @@ package scripts;
 import java.util.ArrayList;
 
 public class BucketSort {
-    private SortingAlgorithms innerAlgorithm;
+    private SortingAlgorithm innerAlgorithm;
 
-    public BucketSort(SortingAlgorithms innerAlgorithm) {
+    public BucketSort(SortingAlgorithm innerAlgorithm) {
         this.innerAlgorithm = innerAlgorithm;
     }
 

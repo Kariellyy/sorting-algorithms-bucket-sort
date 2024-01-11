@@ -1,6 +1,6 @@
 package scripts;
 
-public class BubbleSort implements SortingAlgorithms {
+public class BubbleSort implements SortingAlgorithm {
     @Override
     public int[] sort(int[] dataSet) {
         int[] sortedDataSet = dataSet.clone();
